@@ -1,8 +1,10 @@
 
 <template>
+    <div class="screen px-5">{{ schermo }}</div>
     <div class="scroller">
 
-        <TransitionGroup name="list">
+
+        <TransitionGroup name="slide">
             <MediaCardComp v-for="(item, index) in list" :key="index" :card="item" />
         </TransitionGroup>
 
@@ -50,14 +52,33 @@ export default {
         }
     },
 
+    computed: {
+        schermo() {
+
+            if (this.endPoint.includes('tv')) {
+                return 'Tv Show'
+            } else if (this.endPoint.includes('movie')) {
+                return 'Movie'
+            }
+
+        }
+    }
+
 
 }
 
 </script>
 
 <style lang="scss" scoped>
+.screen {
+    font-size: 30px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
 .scroller {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     height: 300px;
     overflow: auto;
     display: flex;
@@ -65,13 +86,14 @@ export default {
 
 // transition in progress
 
-.list-enter-active,
-.list-leave-active {
-    transition: all 0.8s ease;
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.5s ease;
 }
 
-.list-enter-from,
-.list-leave-to {
+.slide-enter-from,
+.slide-leave-to {
+
     opacity: 0;
     transform: translateX(100px);
 }

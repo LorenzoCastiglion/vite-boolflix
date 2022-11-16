@@ -9,7 +9,7 @@
 
         <div class="descrizione px-3 position-absolute w-100 d-flex align-content-center align-items-center gap-4">
             <div class="col-4">
-                <p class=" text-white " v-html="collassa"></p>
+                <p class=" text-white ">{{ collassa }}</p>
                 <p id="og-name" v-html="(!!card.original_title) ? card.original_title : card.original_name"></p>
             </div>
             <div class="col-6 flex-grow-1 py-1 overflow-auto h-75">

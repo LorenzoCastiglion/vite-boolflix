@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="d-flex justify-content-between p-4 px-5 align-items-center blur">
+    <div class="d-flex justify-content-between p-4 px-5 align-items-center blur ">
 
         <div>
             <img src="../../public/img/BOOLFLIX.png" alt="">
@@ -13,11 +13,13 @@
 
                 <div class="input-group">
                     <input type="text" class="form-control text-danger bg-transparent" id="serchMedia"
-                        placeholder="search">
+                        placeholder="search" v-model="store.options.params.query"
+                        @keyup.enter="store.clicker = !store.clicker">
                 </div>
             </div>
             <div class=" my-1">
-                <button type="submit" class="btn"> <i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="btn" @click="store.clicker = !store.clicker"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
 
@@ -28,9 +30,16 @@
 </template>
 
 <script>
+import { store } from '../store';
 
 export default {
     name: 'SearchBarComp',
+
+    data() {
+        return {
+            store
+        }
+    }
 }
 
 </script>

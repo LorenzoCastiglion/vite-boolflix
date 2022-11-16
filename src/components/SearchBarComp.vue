@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="d-flex justify-content-between p-3 px-5 align-items-center blur ">
+    <div class="d-flex justify-content-between p-2 px-5 align-items-center blur ">
 
         <div>
             <img src="../../public/img/BOOLFLIX.png" alt="">

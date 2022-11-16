@@ -1,6 +1,11 @@
 
 <template>
-    <div class="screen px-5">{{ schermo }}</div>
+
+    <Transition name="slidetitle">
+        <div v-show="list.length" class="screen px-5">{{ schermo }}</div>
+    </Transition>
+
+
     <div class="scroller">
 
 
@@ -96,5 +101,17 @@ export default {
 
     opacity: 0;
     transform: translateX(100px);
+}
+
+.slidetitle-enter-active,
+.slidetitle-leave-active {
+    transition: all 0.5s ease;
+}
+
+.slidetitle-enter-from,
+.slidetitle-leave-to {
+
+    opacity: 0;
+    transform: translateX(-100px);
 }
 </style>

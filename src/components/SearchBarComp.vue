@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="d-flex justify-content-between p-4 px-5 align-items-center blur ">
+    <div class="d-flex justify-content-between p-3 px-5 align-items-center blur ">
 
         <div>
             <img src="../../public/img/BOOLFLIX.png" alt="">
@@ -47,6 +47,7 @@ export default {
 <style lang="scss" scoped>
 .blur {
     backdrop-filter: blur(10px);
+    border-bottom: 2px solid #CE1000;
 }
 
 img {

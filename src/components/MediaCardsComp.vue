@@ -1,7 +1,12 @@
 
 <template>
     <div class="scroller">
-        <MediaCardComp v-for="(item, index) in list" :key="index" :card="item" />
+
+        <TransitionGroup name="list">
+            <MediaCardComp v-for="(item, index) in list" :key="index" :card="item" />
+        </TransitionGroup>
+
+
     </div>
 </template>
 
@@ -52,8 +57,22 @@ export default {
 
 <style lang="scss" scoped>
 .scroller {
+    margin-bottom: 50px;
     height: 300px;
     overflow: auto;
     display: flex;
+}
+
+// transition in progress
+
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.8s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(100px);
 }
 </style>

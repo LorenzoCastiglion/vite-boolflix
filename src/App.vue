@@ -16,6 +16,7 @@ export default {
     return {
       store,
       endPointMovie: '/search/movie',
+      endPointTvShow: '/search/tv'
     }
   },
 
@@ -24,6 +25,13 @@ export default {
       const urlMovie = store.apiUrl + this.endPointMovie;
       axios.get(urlMovie, store.options).then((res) => {
         store.listMovie = [...res.data.results];
+        console.log(res.data.results)
+      }
+      )
+
+      const urlTvShow = store.apiUrl + this.endPointTvShow;
+      axios.get(urlTvShow, store.options).then((res) => {
+        store.listTvShow = [...res.data.results];
         console.log(res.data.results)
       }
       )

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="carta col-4 position-relative">
+    <div class="carta col-4 position-relative flex-shrink-0">
         <div class="img-container">
 
             <img :src="(card.backdrop_path) ? `https://image.tmdb.org/t/p/w300/${card.backdrop_path}` : '/img/BOOLFLIX.png'"
@@ -9,7 +9,7 @@
 
         <div class="descrizione px-3 position-absolute w-100 d-flex align-content-center align-items-center gap-4">
             <div class="col-4">
-                <p class=" text-white " v-html="(!!card.title) ? card.title : card.name"></p>
+                <p class=" text-white " v-html="collassa"></p>
                 <p id="og-name" v-html="(!!card.original_title) ? card.original_title : card.original_name"></p>
             </div>
             <div class="col-6 flex-grow-1 py-1 overflow-auto h-75">
@@ -25,12 +25,33 @@
 </template>
 
 <script>
+import { store } from '../store';
+
 export default {
     name: 'MediaCardComp',
-    props: ['card']
+    props: ['card'],
+
+    data() {
+        return {
+            store
+        }
+    },
+
+    computed: {
+        collassa() {
+            const taglia = (!!this.card.title) ? this.card.title : this.card.name;
+            return store.truncate(taglia, 10)
+
+        }
+
+    }
 }
 
+
+
 </script>
+
+
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@400;700&display=swap');

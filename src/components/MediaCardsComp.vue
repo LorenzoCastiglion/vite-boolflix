@@ -1,6 +1,6 @@
 
 <template>
-    <div>
+    <div class="scroller">
         <MediaCardComp v-for="(item, index) in list" :key="index" :card="item" />
     </div>
 </template>
@@ -51,5 +51,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.scroller {
+    height: 300px;
+    overflow: auto;
+    display: flex;
+}
 </style>

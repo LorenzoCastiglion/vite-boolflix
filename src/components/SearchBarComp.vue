@@ -13,7 +13,7 @@
 
                 <div class="input-group">
                     <input type="text" class="form-control text-danger bg-transparent" id="serchMedia"
-                        placeholder="search" v-model="store.options.params.query"
+                        placeholder="Search..." v-model="store.options.params.query"
                         @keyup.enter="store.clicker = !store.clicker">
                 </div>
             </div>

@@ -76,6 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .screen {
+    margin-top: 40px;
     font-size: 30px;
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -83,7 +84,8 @@ export default {
 }
 
 .scroller {
-    margin-bottom: 10px;
+
+    margin-bottom: 50px;
     height: 300px;
     overflow: auto;
     display: flex;

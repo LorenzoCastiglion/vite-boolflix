@@ -1,6 +1,6 @@
 <template>
 
-    <div class="carta col-4 position-relative flex-shrink-0">
+    <div class="carta mx-3 col-4 position-relative flex-shrink-0">
         <div class="img-container">
 
             <img :src="(card.backdrop_path) ? `https://image.tmdb.org/t/p/w300/${card.backdrop_path}` : '/img/BOOLFLIX.png'"

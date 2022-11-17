@@ -1,20 +1,42 @@
 <template>
 
-    <div class="carta px-3 col-3  position-relative flex-shrink-0">
-        <div class="img-container img-fluid ">
+    <div class="carta mx-3 col-xl-3 col-md-6 col-sm-12  position-relative flex-shrink-0" @mouseover="hover = true"
+        @mouseleave="hover = false">
+        <div class="img-container">
+
+
+            <Transition name="stars">
+                <div class=" position-absolute sopra w-100" v-if="hover">
+
+                    <div class="d-flex flex-column position-absolute stelline">
+                        <i v-for="n in 5" class="fa-star" :class="(n <= vote) ? 'fa-solid' : 'fa-regular'"></i>
+
+                    </div>
+
+                    <div class="overview  py-1 pe-3 overflow-auto h-75">
+                        <h4 class="mb-0">Overview</h4>
+                        <p class="trama">{{ card.overview }}</p>
+                    </div>
+
+                    <div class="lang-flag position-absolute">
+                        <img :src="flag" class="h-100">
+                    </div>
+                </div>
+            </Transition>
+
 
             <img :src="(card.backdrop_path) ? `https://image.tmdb.org/t/p/w300/${card.backdrop_path}` : '/img/BOOLFLIX.png'"
                 :alt="(card.title || card.name)">
         </div>
 
-        <div class="descrizione px-3 position-absolute w-100 d-flex align-content-center align-items-center gap-4">
-            <div class="col-4">
-                <p class=" text-white ">{{ collassa }}</p>
+        <div class="descrizione px-4 position-absolute w-100 d-flex align-content-center align-items-center gap-4">
+
+
+            <div class="col">
+                <p class=" text-white " v-html="this.card.title || this.card.name"></p>
                 <p id="og-name" v-html="card.original_title || card.original_name"></p>
             </div>
-            <div class="col-6 flex-grow-1 py-1 overflow-auto h-75">
-                <p class="trama">{{ card.overview }}</p>
-            </div>
+
 
         </div>
 
@@ -25,6 +47,7 @@
 </template>
 
 <script>
+
 import { store } from '../store';
 
 export default {
@@ -33,15 +56,43 @@ export default {
 
     data() {
         return {
-            store
+            store,
+            hover: false,
+
+
         }
     },
+
 
     computed: {
         collassa() {
             const taglia = (!!this.card.title) ? this.card.title : this.card.name;
             return store.truncate(taglia, 10)
 
+        },
+
+        vote() {
+            return Math.ceil(this.card.vote_average / 2)
+        },
+
+
+        flag() {
+            let flag = this.card.original_language;
+            if (flag == 'en') {
+                flag = 'gb';
+            }
+            else if (flag == 'ja') {
+                flag = 'jp';
+            }
+            else if (flag == 'zh') {
+                flag = 'cn';
+            }
+            else if (flag == 'ko') {
+                flag = 'kr';
+            }
+            let flagUp = flag.toUpperCase();
+            const urlFlag = `https://www.countryflagicons.com/SHINY/64/${flagUp}.png`
+            return urlFlag;
         }
 
     }
@@ -59,6 +110,43 @@ export default {
 .carta {
     height: 300px;
     transition: 0.4s ease-in-out;
+
+
+    .sopra {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.414);
+        height: 230px;
+        top: 30px;
+    }
+
+    .sopra i {
+        color: white;
+
+    }
+
+}
+
+.stelline {
+    top: 30px;
+    left: 10px;
+}
+
+.overview {
+
+    top: 0px;
+    left: 50px;
+    position: absolute;
+}
+
+.lang-flag {
+
+    left: 5px;
+    width: 30px;
+    height: 25px;
+
+
+
+
 }
 
 .carta:hover {
@@ -88,6 +176,9 @@ export default {
         font-family: 'Montserrat', sans-serif;
         font-size: 12px;
     }
+
+
+
 }
 
 #og-name {
@@ -101,5 +192,21 @@ export default {
         height: 250px;
         width: 100%;
     }
+}
+
+
+
+//animaz stelle
+
+.stars-enter-active,
+.stars-leave-active {
+    transition: all 0.5s ease;
+}
+
+.stars-enter-from,
+.stars-leave-to {
+
+    opacity: 0;
+    transform: translateY(100px);
 }
 </style>

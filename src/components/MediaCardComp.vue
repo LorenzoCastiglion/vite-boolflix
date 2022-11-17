@@ -116,6 +116,7 @@ export default {
 .carta {
     height: 300px;
     transition: 0.4s ease-in-out;
+    border-bottom: 4px solid #CE1000;
 
 
     .sopra {

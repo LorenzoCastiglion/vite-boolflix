@@ -2,11 +2,13 @@
 <template>
 
     <Transition name="slidetitle">
-        <div v-show="list.length" class="screen px-5">{{ schermo }}</div>
+        <div class="position-relative">
+            <div v-show="list.length" class="screen px-5 position-absolute">{{ schermo }}</div>
+        </div>
     </Transition>
 
 
-    <div class="scroller d-flex align-items-center ">
+    <div class="scroller d-flex align-items-center mt-3 pt-4">
 
 
         <TransitionGroup name="slide">
@@ -87,19 +89,22 @@ export default {
 
 <style lang="scss" scoped>
 .screen {
+
     margin-top: 10px;
     margin-bottom: 0;
-    font-size: 30px;
+    font-size: 40px;
     color: #CE1000;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+
+
 }
+
 
 .scroller {
 
-
     margin-bottom: 10px;
-    height: 400px;
+    height: 450px;
     overflow: auto;
     display: flex;
 

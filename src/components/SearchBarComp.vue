@@ -51,6 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .blur {
+    z-index: 1000;
     backdrop-filter: blur(10px);
     border-bottom: 2px solid #CE1000;
 }

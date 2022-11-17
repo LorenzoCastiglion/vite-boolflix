@@ -1,16 +1,16 @@
 <template>
 
-    <div class="carta mx-3 col-4 position-relative flex-shrink-0">
-        <div class="img-container">
+    <div class="carta px-3 col-3  position-relative flex-shrink-0">
+        <div class="img-container img-fluid ">
 
             <img :src="(card.backdrop_path) ? `https://image.tmdb.org/t/p/w300/${card.backdrop_path}` : '/img/BOOLFLIX.png'"
-                :alt="(!!card.title) ? card.title : card.name">
+                :alt="(card.title || card.name)">
         </div>
 
         <div class="descrizione px-3 position-absolute w-100 d-flex align-content-center align-items-center gap-4">
             <div class="col-4">
                 <p class=" text-white ">{{ collassa }}</p>
-                <p id="og-name" v-html="(!!card.original_title) ? card.original_title : card.original_name"></p>
+                <p id="og-name" v-html="card.original_title || card.original_name"></p>
             </div>
             <div class="col-6 flex-grow-1 py-1 overflow-auto h-75">
                 <p class="trama">{{ card.overview }}</p>
@@ -55,6 +55,19 @@ export default {
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@400;700&display=swap');
+
+.carta {
+    height: 300px;
+    transition: 0.4s ease-in-out;
+}
+
+.carta:hover {
+
+    z-index: 10000;
+    transform: scale(1.2);
+    transform-origin: top left;
+
+}
 
 .descrizione {
 

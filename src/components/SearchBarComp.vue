@@ -3,9 +3,8 @@
 
     <div class="d-flex justify-content-between p-2 px-5 align-items-center blur ">
 
-        <div>
-            <img src="../../public/img/BOOLFLIX.png" alt="">
-        </div>
+        <img src="../../public/img/BOOLFLIX.png" alt="">
+
 
 
         <div class="col-4 d-flex ">
@@ -52,6 +51,7 @@ export default {
 
 img {
     width: 200px;
+    position: relative;
 
 }
 

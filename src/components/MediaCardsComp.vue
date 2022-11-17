@@ -6,7 +6,7 @@
     </Transition>
 
 
-    <div class="scroller">
+    <div class="scroller d-flex align-items-center py-3">
 
 
         <TransitionGroup name="slide">
@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .screen {
-    margin-top: 40px;
+    margin-top: 10px;
     font-size: 30px;
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -85,10 +85,15 @@ export default {
 
 .scroller {
 
-    margin-bottom: 50px;
-    height: 300px;
+
+    margin-bottom: 10px;
+    height: 400px;
     overflow: auto;
     display: flex;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 // transition in progress

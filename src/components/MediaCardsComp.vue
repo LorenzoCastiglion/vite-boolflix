@@ -37,7 +37,7 @@ export default {
     },
 
     watch: {
-        'store.clicker'() {
+        'store.options.params.query'() {
             this.getApi()
         }
     },
@@ -56,31 +56,21 @@ export default {
 
         },
 
-        trending() {
 
-            const url = store.apiUrl + '/trending' + '/all' + '/day';
-            axios.get(url, store.options).then((res) => {
-                this.list = [...res.data.results];
-
-            })
-
-        }
     },
 
     computed: {
         schermo() {
-
             if (this.endPoint.includes('tv')) {
                 return 'Tv Shows'
             } else if (this.endPoint.includes('movie')) {
                 return 'Movies'
             }
-
         }
     },
 
     created() {
-        return this.trending()
+        this.getApi()
     }
 
 

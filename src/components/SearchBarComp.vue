@@ -12,13 +12,11 @@
 
                 <div class="input-group">
                     <input type="text" class="form-control text-danger bg-transparent" id="serchMedia"
-                        placeholder="Search..." v-model="store.options.params.query"
-                        @keyup.enter="store.clicker = !store.clicker">
+                        placeholder="Search..." v-model="text" @keyup.enter="search">
                 </div>
             </div>
             <div class=" my-1">
-                <button class="btn" @click="store.clicker = !store.clicker"><i
-                        class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="btn" @click="search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
 
@@ -36,7 +34,15 @@ export default {
 
     data() {
         return {
-            store
+            store,
+            text: ''
+
+        }
+    },
+
+    methods: {
+        search() {
+            store.options.params.query = this.text
         }
     }
 }

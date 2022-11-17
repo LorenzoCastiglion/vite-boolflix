@@ -62,7 +62,11 @@ export default {
     computed: {
         schermo() {
             if (this.endPoint.includes('trending')) {
-                return 'Trending Now'
+                if (this.endPoint.includes('tv')) {
+                    return 'Trending Tv Shows'
+                } else if (this.endPoint.includes('movie')) {
+                    return 'Trending Movies'
+                }
             } else if (this.endPoint.includes('movie')) {
                 return 'Movies'
             } else if (this.endPoint.includes('tv')) {

@@ -6,7 +6,7 @@
     </Transition>
 
 
-    <div class="scroller d-flex align-items-center py-3">
+    <div class="scroller d-flex align-items-center ">
 
 
         <TransitionGroup name="slide">
@@ -54,6 +54,16 @@ export default {
             })
 
 
+        },
+
+        trending() {
+
+            const url = store.apiUrl + '/trending' + '/all' + '/day';
+            axios.get(url, store.options).then((res) => {
+                this.list = [...res.data.results];
+
+            })
+
         }
     },
 
@@ -61,12 +71,16 @@ export default {
         schermo() {
 
             if (this.endPoint.includes('tv')) {
-                return 'Tv Show'
+                return 'Tv Shows'
             } else if (this.endPoint.includes('movie')) {
-                return 'Movie'
+                return 'Movies'
             }
 
         }
+    },
+
+    created() {
+        return this.trending()
     }
 
 
@@ -77,8 +91,9 @@ export default {
 <style lang="scss" scoped>
 .screen {
     margin-top: 10px;
+    margin-bottom: 0;
     font-size: 30px;
-    color: white;
+    color: #CE1000;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }

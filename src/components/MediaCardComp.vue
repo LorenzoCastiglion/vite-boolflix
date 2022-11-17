@@ -90,6 +90,12 @@ export default {
             else if (flag == 'ko') {
                 flag = 'kr';
             }
+            else if (flag == 'cs') {
+                flag = 'sk';
+            }
+            else if (flag == 'da') {
+                flag = 'dk';
+            }
             let flagUp = flag.toUpperCase();
             const urlFlag = `https://www.countryflagicons.com/SHINY/64/${flagUp}.png`
             return urlFlag;
@@ -127,7 +133,7 @@ export default {
 }
 
 .stelline {
-    top: 30px;
+    top: 38px;
     left: 10px;
 }
 
@@ -139,7 +145,7 @@ export default {
 }
 
 .lang-flag {
-
+    top: 6px;
     left: 5px;
     width: 30px;
     height: 25px;

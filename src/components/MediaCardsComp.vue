@@ -51,14 +51,20 @@ export default {
 
             const url = store.apiUrl + this.endPoint;
             axios.get(url, store.options).then((res) => {
-                this.list = [...res.data.results];
-
+                this.list = res.data.results;
+                let midpoint = 'movie'
+                if (this.endPoint.includes('tv')) {
+                    midpoint = 'tv'
+                }
+                this.list.forEach((element) => {
+                    axios.get(`${store.apiUrl}/${midpoint}/${element.id}/credits`, store.options).then((cast) => {
+                        element.cast = cast.data.cast
+                        console.log(element.cast)
+                        console.log(this.list)
+                    })
+                });
             })
-
-
         },
-
-
     },
 
     computed: {
@@ -70,9 +76,9 @@ export default {
                     return 'Trending Movies'
                 }
             } else if (this.endPoint.includes('movie')) {
-                return 'Movies'
+                return 'I like it when you Movies'
             } else if (this.endPoint.includes('tv')) {
-                return 'Tv Shows'
+                return 'Why so Series?'
 
             }
         }
@@ -102,15 +108,30 @@ export default {
 
 
 .scroller {
-
     margin-bottom: 10px;
     height: 450px;
     overflow: auto;
     display: flex;
 
     &::-webkit-scrollbar {
-        display: none;
+        height: 8px;
+        width: 0;
+        border-radius: 10px;
     }
+
+    &::-webkit-scrollbar-track {
+        background: rgb(58, 58, 58);
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-bottom: 100vh solid #CE1000;
+        border-radius: 10px;
+
+
+
+    }
+
 }
 
 // transition in progress

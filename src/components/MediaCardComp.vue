@@ -6,7 +6,7 @@
 
 
             <Transition name="stars">
-                <div class=" position-absolute sopra w-100" v-if="hover">
+                <div class=" position-absolute sopra w-100">
 
                     <div class="d-flex flex-column position-absolute stelline">
                         <i v-for="n in 5" class="fa-star" :class="(n <= vote) ? 'fa-solid' : 'fa-regular'"></i>
@@ -14,8 +14,20 @@
                     </div>
 
                     <div class="overview  py-1 pe-3 overflow-auto h-75">
-                        <h4 class="mb-0">Overview</h4>
+                        <div class="mb-0 d-flex">
+                            <div v-for="el in store.listGenre">
+                                <span class="me-1 genere " v-if="card.genre_ids.includes(el.id)">|{{
+                                        el.name.toUpperCase()
+                                }}|</span>
+                            </div>
+                        </div>
                         <p class="trama">{{ card.overview }}</p>
+                        <!-- fare v-for per prendere i primi 5 res -->
+                        <div>
+                            <p class="mb-0">CAST:</p>
+                            <p class="cast-members mb-0" v-for="(el, i) in card.cast" v-show="i <= 4">- {{ el.name
+                            }} / {{ el.character }}</p>
+                        </div>
                     </div>
 
                     <div class="lang-flag position-absolute">
@@ -33,6 +45,7 @@
 
 
             <div class="col">
+
                 <p class=" text-white " v-html="this.card.title || this.card.name"></p>
                 <p id="og-name" v-html="card.original_title || card.original_name"></p>
             </div>
@@ -75,7 +88,18 @@ export default {
             return Math.ceil(this.card.vote_average / 2)
         },
 
+        // genre() {
 
+        //     for (let i = 0; i < store.listGenre.length; i++) {
+
+        //         if (store.listGenre.id.includes(this.card.genre_id)) {
+        //             return store.listGenre.name
+        //         }
+
+        //     }
+        // },
+
+        // flag e controlli mancanti
         flag() {
             let flag = this.card.original_language;
             if (flag == 'en') {
@@ -127,7 +151,7 @@ export default {
     }
 
     .sopra i {
-        color: white;
+        color: #CE1000;
 
     }
 
@@ -150,9 +174,11 @@ export default {
     left: 5px;
     width: 30px;
     height: 25px;
+}
 
-
-
+.genere {
+    font-size: 11px;
+    color: white // background-color: black;
 
 }
 

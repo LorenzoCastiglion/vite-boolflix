@@ -3,12 +3,12 @@
 
     <Transition name="slidetitle">
         <div class="position-relative">
-            <div v-show="list.length" class="screen px-5 position-absolute">{{ schermo }}</div>
+            <div v-show="list.length" class=" screen px-5 position-absolute">{{ schermo }}</div>
         </div>
     </Transition>
 
 
-    <div class="scroller d-flex align-items-center mt-3 pt-4">
+    <div class="scroller d-flex align-items-center mt-3  m-auto">
 
 
         <TransitionGroup name="slide">
@@ -96,6 +96,7 @@ export default {
 <style lang="scss" scoped>
 .screen {
 
+    left: 7%;
     margin-top: 10px;
     margin-bottom: 0;
     font-size: 40px;
@@ -108,19 +109,22 @@ export default {
 
 
 .scroller {
+
+    width: 80%;
     margin-bottom: 10px;
-    height: 450px;
+    height: 400px;
     overflow: auto;
     display: flex;
 
     &::-webkit-scrollbar {
-        height: 8px;
+        height: 6px;
         width: 0;
         border-radius: 10px;
     }
 
     &::-webkit-scrollbar-track {
         background: rgb(58, 58, 58);
+
 
     }
 

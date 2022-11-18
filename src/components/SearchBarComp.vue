@@ -5,6 +5,20 @@
 
         <img src="../../public/img/BOOLFLIX.png" alt="">
 
+        <div class="d-flex flex-grow-1 ms-4">
+            <ul class="d-flex gap-3  list-unstyled mb-0 ">
+
+                <li><a href="">Home</a></li>
+
+                <li><a href="">Serie Tv</a></li>
+
+                <li><a href="">Film</a></li>
+
+                <li><a href="">Generi<i class="fa-sharp fa-solid fa-chevron-down ms-2"></i></a></li>
+
+            </ul>
+        </div>
+
 
 
         <div class="col-4 d-flex ">
@@ -50,6 +64,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+li a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+        color: #CE1000;
+    }
+}
+
 .blur {
     z-index: 1000;
     backdrop-filter: blur(10px);

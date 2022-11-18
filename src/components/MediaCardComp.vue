@@ -1,7 +1,7 @@
 <template>
 
-    <div class="carta mx-3 col-xl-3 col-md-6 col-sm-12  position-relative flex-shrink-0" @mouseover="hover = true"
-        @mouseleave="hover = false">
+    <div class="carta mx-3 col-xl-3 col-md-6 col-sm-12  position-relative flex-shrink-0 overflow-hidden"
+        @mouseover="hover = true" @mouseleave="hover = false">
         <div class="img-container">
 
 
@@ -22,11 +22,14 @@
                             </div>
                         </div>
                         <p class="trama">{{ card.overview }}</p>
+                        <p class="mb-0">CAST:</p>
                         <!-- fare v-for per prendere i primi 5 res -->
-                        <div>
-                            <p class="mb-0">CAST:</p>
-                            <p class="cast-members mb-0" v-for="(el, i) in card.cast" v-show="i <= 4">- {{ el.name
-                            }} / {{ el.character }}</p>
+                        <div class="d-flex justify-content-between gap-2" :class="{ 'cast-img mb-3': i <= 4 }"
+                            v-for="(el, i) in card.cast">
+                            <img class="col rounded" :src="`https://image.tmdb.org/t/p/w300/${el.profile_path}`"
+                                v-show="i <= 4">
+                            <p class="cast-members col-8 mb-0" v-show="i <= 4">{{ el.name
+                            }} as {{ el.character }}</p>
                         </div>
                     </div>
 
@@ -138,7 +141,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@400;700&display=swap');
 
 .carta {
-    height: 300px;
+    height: 250px;
     transition: 0.4s ease-in-out;
     border-bottom: 4px solid #CE1000;
 
@@ -148,7 +151,7 @@ export default {
         color: white;
         background-color: rgba(0, 0, 0, 0.414);
         height: 230px;
-        top: 30px;
+
     }
 
     .sopra i {
@@ -224,9 +227,14 @@ export default {
 
 .img-container {
     img {
-        height: 250px;
+
         width: 100%;
     }
+}
+
+.cast-img {
+    height: 100px;
+
 }
 
 
@@ -235,7 +243,7 @@ export default {
 
 .stars-enter-active,
 .stars-leave-active {
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in-out;
 }
 
 .stars-enter-from,

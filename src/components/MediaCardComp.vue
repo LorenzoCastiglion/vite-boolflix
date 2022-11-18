@@ -6,7 +6,7 @@
 
 
             <Transition name="stars">
-                <div class=" position-absolute sopra w-100">
+                <div class=" position-absolute sopra w-100" v-if="hover">
 
                     <div class="d-flex flex-column position-absolute stelline">
                         <i v-for="n in 5" class="fa-star" :class="(n <= vote) ? 'fa-solid' : 'fa-regular'"></i>
@@ -144,6 +144,7 @@ export default {
 
 
     .sopra {
+        border-top: 2px solid #CE1000;
         color: white;
         background-color: rgba(0, 0, 0, 0.414);
         height: 230px;
@@ -170,10 +171,11 @@ export default {
 }
 
 .lang-flag {
+
     top: 6px;
     left: 5px;
     width: 30px;
-    height: 25px;
+    height: 30px;
 }
 
 .genere {

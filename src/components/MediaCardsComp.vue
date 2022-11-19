@@ -2,7 +2,7 @@
 <template>
 
     <Transition name="slidetitle">
-        <div class="position-relative">
+        <div class="position-relative pt-4">
             <div v-show="list.length" class=" screen px-5 position-absolute">{{ schermo }}</div>
         </div>
     </Transition>
@@ -85,7 +85,10 @@ export default {
     },
 
     created() {
-        this.getApi()
+        setTimeout(() => {
+            this.getApi()
+        }, 5000)
+
     }
 
 

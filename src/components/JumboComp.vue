@@ -14,17 +14,19 @@ export default {
 
 <style lang="scss" scoped>
 .jumbo {
+    z-index: -1;
     margin-top: 0px;
-    height: 800px;
+
     position: relative;
 
 
 
     #myVideo {
-        position: absolute;
+        height: 980px;
+
         left: 0;
         top: 0;
-        min-width: 100%;
+        width: 100%;
     }
 }
 </style>

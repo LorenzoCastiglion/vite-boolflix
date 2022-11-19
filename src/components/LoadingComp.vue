@@ -19,7 +19,7 @@ export default {
 .loader {
     background-color: black;
     bottom: 0;
-
+    margin: 0 auto;
     display: block;
     font-size: 32px;
     left: 0;
@@ -61,7 +61,7 @@ export default {
         position: absolute;
         left: 0;
         top: 0;
-        min-width: 100%;
+        width: 100%;
     }
 }
 </style>

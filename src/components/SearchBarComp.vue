@@ -16,8 +16,11 @@
 
                 <li><a href="">Generi<i class="fa-sharp fa-solid fa-chevron-down ms-2"></i></a></li>
 
+
             </ul>
         </div>
+
+
 
 
 
@@ -25,7 +28,7 @@
             <div class="col my-1">
 
                 <div class="input-group">
-                    <input type="text" class="form-control text-danger bg-transparent" id="serchMedia"
+                    <input type="text" class="form-control border-danger text-danger bg-transparent" id="serchMedia"
                         placeholder="Search..." v-model="text" @keyup.enter="search">
                 </div>
             </div>

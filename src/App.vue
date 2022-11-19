@@ -3,6 +3,10 @@
     <SearchBarComp />
   </header>
 
+  <div>
+    <JumboComp />
+  </div>
+
   <main>
     <MainComp />
   </main>
@@ -14,7 +18,9 @@
 </template>
 
 <script>
+
 import SearchBarComp from './components/SearchBarComp.vue';
+import JumboComp from './components/JumboComp.vue';
 import MainComp from './components/MainComp.vue';
 import axios from 'axios';
 
@@ -35,7 +41,8 @@ export default {
 
   components: {
     SearchBarComp,
-    MainComp
+    MainComp,
+    JumboComp
   },
 
   methods: {

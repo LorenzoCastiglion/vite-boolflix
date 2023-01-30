@@ -26,9 +26,9 @@
                         <!-- fare v-for per prendere i primi 5 res -->
                         <div class="d-flex justify-content-between gap-2" :class="{ 'cast-img mb-3': i <= 4 }"
                             v-for="(el, i) in card.cast">
-                            <img class="col rounded" :src="`https://image.tmdb.org/t/p/w300/${el.profile_path}`"
+                            <img class="rounded" :src="`https://image.tmdb.org/t/p/w300/${el.profile_path}`"
                                 v-show="i <= 4">
-                            <p class="cast-members col-8 mb-0" v-show="i <= 4">{{ el.name
+                            <p class="cast-members  mb-0" v-show="i <= 4">{{ el.name
                             }} as {{ el.character }}</p>
                         </div>
                     </div>

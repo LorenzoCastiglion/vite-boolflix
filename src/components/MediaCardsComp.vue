@@ -112,10 +112,10 @@ export default {
 
 
 .scroller {
-
-    width: 80%;
-    margin-bottom: 10px;
+ margin-bottom: 10px;
     height: 400px;
+    width: 80%;
+   
     overflow: auto;
     display: flex;
 
